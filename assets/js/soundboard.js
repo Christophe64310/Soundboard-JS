@@ -38,9 +38,15 @@ const soundboard = {
    */
   definePads: function() {
     // TODO 2
-    // soundboard.kickElement = ...
-    // soundboard.hihatElement = ...
-    // etc
+    
+    soundboard.kickElement = document.querySelector('.pad-1');
+    soundboard.hihatElement= document.querySelector('.pad-2');
+    soundboard.snareElement= document.querySelector('.pad-3');
+    soundboard.wobbleElement= document.querySelector('.pad-4');
+    soundboard.vocalElement= document.querySelector('.pad-5');
+    soundboard.scratchElement= document.querySelector('.pad-6');
+    
+
   },
 
   /**
@@ -109,6 +115,24 @@ const soundboard = {
    */
   attachEvents: function() {
     // TODO 3
+    soundboard.kickElement.addEventListener('click', soundboard.handleKickClick);
+    soundboard.hihatElement.addEventListener('click', soundboard.handleHihatClick);
+    soundboard.snareElement.addEventListener('click', soundboard.handleSnareClick);
+    soundboard.wobbleElement.addEventListener('click', soundboard.handleWobbleClick);
+    soundboard.vocalElement.addEventListener('click', soundboard.handleFxClick);
+    soundboard.scratchElement.addEventListener('click', soundboard.handleScratchClick);
+    document.addEventListener('keydown', soundboard.handleKeyboard);
   },
+
+  handleKeyboard: function(event) {
+    if (event.key === 'a') { soundboard.kickElement.click(); }
+    if (event.key === 'z') { soundboard.hihatElement.click(); }
+    if (event.key === 'e') { soundboard.snareElement.click(); }
+    if (event.key === 'q') { soundboard.wobbleElement.click(); }
+    if (event.key === 's') { soundboard.vocalElement.click(); }
+    if (event.key === 'd') { soundboard.scratchElement.click(); }
+  },
+
+  
 
 }
