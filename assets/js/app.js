@@ -16,6 +16,4 @@ const app = {
  * lorsque le DOM est prêt
  */
 // TODO 1
-document.addEventListener('DOMContentLoaded', function() {
-  app.init();
-});
+document.addEventListener('DOMContentLoaded', app.init);

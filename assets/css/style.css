@@ -74,7 +74,7 @@ body {
   border-color: currentColor;
 }
 
-.pads > div:active {
+.active {
   border-color: transparent;
   background-color: #7ee787;
   color: #033a16;

@@ -1,5 +1,4 @@
 const soundboard = {
-
   /**
    * Propriétés liées au DOM
    * les valeurs appropriées seront données par la méthode "definePads"
@@ -10,7 +9,7 @@ const soundboard = {
   wobbleElement: null,
   vocalElement: null,
   scratchElement: null,
-  
+
   /**
    * Propriétés liées à l'Audio
    * les valeurs appropriées seront données par la la méthode "preloadSamples"
@@ -25,8 +24,8 @@ const soundboard = {
   /**
    * Méthode permettant d'initialiser la sound board
    */
-  init: function() {
-    console.log('soundboard.init');
+  init: function () {
+    console.log("soundboard.init");
     soundboard.definePads();
     soundboard.preloadSamples();
     soundboard.attachEvents();
@@ -36,103 +35,150 @@ const soundboard = {
    * Méthode permettant de sélectionner dans le DOM
    * les différents éléments pads
    */
-  definePads: function() {
+  definePads: function () {
     // TODO 2
-    
-    soundboard.kickElement = document.querySelector('.pad-1');
-    soundboard.hihatElement= document.querySelector('.pad-2');
-    soundboard.snareElement= document.querySelector('.pad-3');
-    soundboard.wobbleElement= document.querySelector('.pad-4');
-    soundboard.vocalElement= document.querySelector('.pad-5');
-    soundboard.scratchElement= document.querySelector('.pad-6');
-    
 
+    soundboard.kickElement = document.querySelector(".pad-1");
+    soundboard.hihatElement = document.querySelector(".pad-2");
+    soundboard.snareElement = document.querySelector(".pad-3");
+    soundboard.wobbleElement = document.querySelector(".pad-4");
+    soundboard.vocalElement = document.querySelector(".pad-5");
+    soundboard.scratchElement = document.querySelector(".pad-6");
   },
 
   /**
    * Méthode permettant d'initialiser et de précharger
    * les différents samples audio à jouer
    */
-  preloadSamples: function() {
-    soundboard.kickAudio = new Audio('assets/audio/kick.opus');
-    soundboard.hihatAudio = new Audio('assets/audio/hihat.opus');
-    soundboard.snareAudio = new Audio('assets/audio/snare.opus');
-    soundboard.wobbleAudio = new Audio('assets/audio/wobble.opus');
-    soundboard.vocalAudio = new Audio('assets/audio/voice.opus');
-    soundboard.scratchAudio = new Audio('assets/audio/scratch.opus');
+  preloadSamples: function () {
+    soundboard.kickAudio = new Audio("assets/audio/kick.opus");
+    soundboard.hihatAudio = new Audio("assets/audio/hihat.opus");
+    soundboard.snareAudio = new Audio("assets/audio/snare.opus");
+    soundboard.wobbleAudio = new Audio("assets/audio/wobble.opus");
+    soundboard.vocalAudio = new Audio("assets/audio/voice.opus");
+    soundboard.scratchAudio = new Audio("assets/audio/scratch.opus");
   },
 
   /**
    * Méthode/Handler exécuté lorsque le pad "kick" est pressé
    */
-  handleKickClick: function() {
+  handleKickClick: function () {
     soundboard.kickAudio.currentTime = 0;
     soundboard.kickAudio.play();
+    soundboard.kickElement.classList.add("active"); // Ajoute la classe active
+    setTimeout(() => {
+      soundboard.kickElement.classList.remove("active"); // Retire la classe après un certain délai
+    }, 300); // Définissez la durée en millisecondes
   },
 
   /**
    * Méthode/Handler exécuté lorsque le pad "hi-hat" est appuyé
    */
-  handleHihatClick: function() {
+  handleHihatClick: function () {
     soundboard.hihatAudio.currentTime = 0;
     soundboard.hihatAudio.play();
+    soundboard.hihatElement.classList.add("active"); // Ajoute la classe active
+    setTimeout(() => {
+      soundboard.hihatElement.classList.remove("active"); // Retire la classe après un certain délai
+    }, 300); // Définissez la durée en millisecondes
   },
 
   /**
    * Méthode/Handler exécuté lorsque le pad "snare" est appuyé
    */
-  handleSnareClick: function() {
+  handleSnareClick: function () {
     soundboard.snareAudio.currentTime = 0;
     soundboard.snareAudio.play();
+    soundboard.snareElement.classList.add("active"); // Ajoute la classe active
+    setTimeout(() => {
+      soundboard.snareElement.classList.remove("active"); // Retire la classe après un certain délai
+    }, 300); // Définissez la durée en millisecondes
   },
 
   /**
    * Méthode/Handler exécuté lorsque le pad "wobble" est appuyé
    */
-  handleWobbleClick: function() {
+  handleWobbleClick: function () {
     soundboard.wobbleAudio.currentTime = 0;
     soundboard.wobbleAudio.play();
+    soundboard.wobbleElement.classList.add("active"); // Ajoute la classe active
+    setTimeout(() => {
+      soundboard.wobbleElement.classList.remove("active"); // Retire la classe après un certain délai
+    }, 300); // Définissez la durée en millisecondes
   },
 
   /**
    * Méthode/Handler exécuté lorsque le pad "vocal" est appuyé
    */
-  handleFxClick: function() {
+  handleFxClick: function () {
     soundboard.vocalAudio.currentTime = 0;
     soundboard.vocalAudio.play();
+    soundboard.vocalElement.classList.add("active"); // Ajoute la classe active
+    setTimeout(() => {
+      soundboard.vocalElement.classList.remove("active"); // Retire la classe après un certain délai
+    }, 300); // Définissez la durée en millisecondes
   },
 
   /**
    * Méthode/Handler exécuté lorsque le pad "scratch" est appuyé
    */
-  handleScratchClick: function() {
+  handleScratchClick: function () {
     soundboard.scratchAudio.currentTime = 0;
     soundboard.scratchAudio.play();
+    soundboard.scratchElement.classList.add("active"); // Ajoute la classe active
+    setTimeout(() => {
+      soundboard.scratchElement.classList.remove("active"); // Retire la classe après un certain délai
+    }, 300); // Définissez la durée en millisecondes
   },
 
   /**
    * Méthode permettant d'ajouter un écouteur d'évènement par pad
    */
-  attachEvents: function() {
+  attachEvents: function () {
     // TODO 3
-    soundboard.kickElement.addEventListener('click', soundboard.handleKickClick);
-    soundboard.hihatElement.addEventListener('click', soundboard.handleHihatClick);
-    soundboard.snareElement.addEventListener('click', soundboard.handleSnareClick);
-    soundboard.wobbleElement.addEventListener('click', soundboard.handleWobbleClick);
-    soundboard.vocalElement.addEventListener('click', soundboard.handleFxClick);
-    soundboard.scratchElement.addEventListener('click', soundboard.handleScratchClick);
-    document.addEventListener('keydown', soundboard.handleKeyboard);
+    soundboard.kickElement.addEventListener(
+      "click",
+      soundboard.handleKickClick
+    );
+    soundboard.hihatElement.addEventListener(
+      "click",
+      soundboard.handleHihatClick
+    );
+    soundboard.snareElement.addEventListener(
+      "click",
+      soundboard.handleSnareClick
+    );
+    soundboard.wobbleElement.addEventListener(
+      "click",
+      soundboard.handleWobbleClick
+    );
+    soundboard.vocalElement.addEventListener("click", soundboard.handleFxClick);
+    soundboard.scratchElement.addEventListener(
+      "click",
+      soundboard.handleScratchClick
+    );
+    document.addEventListener("keydown", soundboard.handleKeyboard);
   },
 
-  handleKeyboard: function(event) {
-    if (event.key === 'a') { soundboard.kickElement.click(); }
-    if (event.key === 'z') { soundboard.hihatElement.click(); }
-    if (event.key === 'e') { soundboard.snareElement.click(); }
-    if (event.key === 'q') { soundboard.wobbleElement.click(); }
-    if (event.key === 's') { soundboard.vocalElement.click(); }
-    if (event.key === 'd') { soundboard.scratchElement.click(); }
+  handleKeyboard: function (event) {
+    
+    if (event.key === "a") {
+      soundboard.kickElement.click();
+    }
+    if (event.key === "z") {
+      soundboard.hihatElement.click();
+    }
+    if (event.key === "e") {
+      soundboard.snareElement.click();
+    }
+    if (event.key === "q") {
+      soundboard.wobbleElement.click();
+    }
+    if (event.key === "s") {
+      soundboard.vocalElement.click();
+    }
+    if (event.key === "d") {
+      soundboard.scratchElement.click();
+    }
   },
-
-  
-
-}
+};
